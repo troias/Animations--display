@@ -14,12 +14,24 @@
 }
 
 .ModalOpen {
-    animation: openModal 0.4s easy-out forwards;
+    animation: openModal 1s ease-out forwards;
 }
 
 .ModalClosed {
-    opacity: 0 ;
-    transform: translateY(-100%)
+   animation: closeModal 1s ease-out forwards;
+}
+
+.fade-slide-enter {
+    
+}
+.fade-slide-enter-active {
+    animation: openModal 1s ease-out forwards;
+}
+.fade-slide-exit {
+   
+}
+.fade-slide-exit-active {
+    animation: closeModal 1s ease-out forwards;
 }
 
 @keyframes openModal {
@@ -28,12 +40,12 @@
         transform: translateY(-100%)
     }
     50% {
-        opacity: 1 ;
+        opacity: 0.5 ;
         transform: translateY(90%)
     }
-    100%{
+    100% {
         opacity: 1 ;
-        transform: translateY(20%)
+        transform: translateY(0%)
     }
 }
 
@@ -46,7 +58,7 @@
         opacity: 0.5 ;
         transform: translateY(50%)
     }
-    100%{
+    100% {
         opacity: 0 ;
         transform: translateY(-100%)
     }

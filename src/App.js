@@ -32,11 +32,18 @@ class App extends Component {
           showBlock: !prevState.showBlock
         }))}> Toggle  </button>
         <br />
-        <Transition in={this.state.showBlock} 
-                    timeout={1000}
-                    mountOnEnter
-                    unmountOnExit>
-          {state => ( <div style={{
+        <Transition
+          in={this.state.showBlock}
+          timeout={1000}
+          mountOnEnter
+          unmountOnExit
+          onEnter={() => console.log('jim onEnter')}
+          onEntering={() => console.log('bo onEntering')}
+          onEntered={() => console.log('jim onEntered')}
+          onExit={() => console.log('jim onEntered')}
+          onExiting={() => console.log('jim onExiting')}
+          onExited={() => console.log('jim onExited')}>
+          {state => (<div style={{
             backgroundColor: 'red',
             width: 100,
             height: 100,
@@ -44,13 +51,11 @@ class App extends Component {
             margin: 'auto',
             transition: 'opacity 1s easy-out',
             opacity: state === 'exiting' ? 0 : 1,
-          }}></div>)} 
+          }}></div>)}
 
         </Transition>
-
-
-        {  this.state.modalIsOpen ? <Modal show={this.state.modalIsOpen} closed={this.closeModal} /> : null}
-        {  this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} /> : null}
+        <Modal show={this.state.modalIsOpen} closed={this.closeModal} />
+        {  this.state.modalIsOpen ? <Backdrop show /> : null}
         <button className="Button" onClick={this.showModal}>Open Modal</button>
         <h3>Animating Lists</h3>
         <List />
